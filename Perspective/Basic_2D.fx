@@ -1,6 +1,7 @@
 // ---------------------------------------------------------
 // Basic_2D.fx
 // Simple2D perspective
+// 定点着色
 // ---------------------------------------------------------
 
 
@@ -52,4 +53,3 @@ VS_OUTPUT VS( VS_INPUT Input )
 float4 PS( VS_OUTPUT Input ) : SV_TARGET {
     return Tex2D.Sample( MeshTextureSampler, Input.v2Tex ) * Input.v4Color;
 }
-
