@@ -1,13 +1,13 @@
 // ---------------------------------------------------------
 // Basic_2D.fx
-// Simple2Dシェーダ
+// Simple2D perspective
 // ---------------------------------------------------------
 
 
-// テクスチャ
-Texture2D Tex2D : register( t0 );		// テクスチャ
 
-// テクスチャサンプラ
+Texture2D Tex2D : register( t0 );	
+
+
 SamplerState MeshTextureSampler : register( s0 )
 {
     Filter = MIN_MAG_MIP_LINEAR;
@@ -15,28 +15,28 @@ SamplerState MeshTextureSampler : register( s0 )
     AddressV = Wrap;
 };
 
-// 定数バッファ
+
 cbuffer cbNeverChanges : register( b0 )
 {
     matrix View;
 };
 
 
-// VertexShader入力形式
+
 struct VS_INPUT {
-    float4 v4Position	: POSITION;		// 位置
-    float4 v4Color		: COLOR;		// 色
-    float2 v2Tex		: TEXTURE;		// テクスチャ座標
+    float4 v4Position	: POSITION;		
+    float4 v4Color		: COLOR;		
+    float2 v2Tex		: TEXTURE;		
 };
 
-// VertexShader出力形式
+
 struct VS_OUTPUT {
-    float4 v4Position	: SV_POSITION;	// 位置
-    float4 v4Color		: COLOR;		// 色
-    float2 v2Tex		: TEXTURE;		// テクスチャ座標
+    float4 v4Position	: SV_POSITION;	
+    float4 v4Color		: COLOR;		
+    float2 v2Tex		: TEXTURE;		
 };
 
-// 頂点シェーダ
+
 VS_OUTPUT VS( VS_INPUT Input )
 {
     VS_OUTPUT	Output;
@@ -48,7 +48,7 @@ VS_OUTPUT VS( VS_INPUT Input )
     return Output;
 }
 
-// ピクセルシェーダ
+
 float4 PS( VS_OUTPUT Input ) : SV_TARGET {
     return Tex2D.Sample( MeshTextureSampler, Input.v2Tex ) * Input.v4Color;
 }
