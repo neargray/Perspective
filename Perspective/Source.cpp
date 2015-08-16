@@ -369,7 +369,7 @@ int LoadTexture(TCHAR *szFileName, TEX_PICTURE *pTexPic)
 	nTexHeight = (int)pow(2.0, floor(log((double)ImageInfo.Height) / log(2.0) + 1.01));
 	if ((nTexHeight / 2) == ImageInfo.Height) nTexHeight /= 2;
 
-	// •Ì©`•…
+
 	ZeroMemory(&liLoadInfo, sizeof(D3DX11_IMAGE_LOAD_INFO));
 	liLoadInfo.Width = nTexWidth;
 	liLoadInfo.Height = nTexHeight;
@@ -569,7 +569,7 @@ int DrawPicture(float x, float y, TEX_PICTURE *pTexPic)
 }
 
 
-// Ω}§Œ“ª≤ø∑÷√Ëª≠
+
 int DrawPicturePart(float x1, float y1, float x2, float y2, float px, float py, TEX_PICTURE *pTexPic)
 {
 	float			u1, v1, u2, v2;
